@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx-app
+spec:
+  selector:
+    matchLabels:
+      app: example
+      manager: cloudify
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: example
+        manager: cloudify
+    spec:
+      containers:
+      - name: example-nginx-app
+        image: jcornutt/cloudify:latest
+        ports:
+        - containerPort: 8080
+          name: http-server
+        resources:
+          limits:
+            cpu: 1
+            memory: 128Mi
+          requests:
+            cpu: 1
+            memory: 128Mi
