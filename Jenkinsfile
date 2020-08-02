@@ -23,6 +23,8 @@ pipeline {
             cfyKubernetes credentialsId: "{params.cfy_credentials}",
                 deploymentId: "${params.environment_id}",
                 k8sMaster: "${params.kubernetes_master}",
+                apiKeyCredentialsId: "${params.kubernetes_api_key}",
+                definitionFile: "resources.yaml",
                 echoInputs: true,
                 echoEnvData: true,
                 envDataLocation: 'env-data.json'
